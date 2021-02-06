@@ -10,7 +10,7 @@ class Video:
     content_detail: Dict[str, str]
     statistic: Dict[str, int]
 
-    def to_dict(self):
+    def to_dict(self, **kwargs):
         """Convert video instance to dictionary."""
         snippet = {
             "publish_time": self.snippet.get("publishedAt"),
@@ -54,4 +54,4 @@ class Video:
             "comment": self.statistic.get("commentCount")
         }
 
-        return dict(**snippet, **content, **statistic)
+        return dict(**snippet, **content, **statistic, **kwargs)
