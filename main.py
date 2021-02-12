@@ -6,24 +6,12 @@ from time import time
 
 import pandas as pd
 
+from common.utils import save_to_csv
 from ytid import config, YouTube
 from ytid.logger import setup_logging
 
 
 _LOGGER = logging.getLogger(__name__)
-
-
-def save_to_csv(data, filename="trending.csv"):
-    """Save data as csv in the given datadir."""
-    if not os.path.isdir(filename.split("/")[-2]):
-        os.makedirs(filename.split("/")[-2])
-
-    if not os.path.exists(filename):
-        data.to_csv(filename, index=False)
-        return
-
-    data.to_csv(filename, index=False, header=False, mode="a")
-    return
 
 
 def main():
