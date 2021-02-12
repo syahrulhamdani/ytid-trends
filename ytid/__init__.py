@@ -60,7 +60,7 @@ class YouTube:
 
         response = self._get(payload)
         videos = response.get("items")
-        _LOGGER.debug("Got %d videos", len(videos))
+        _LOGGER.debug("Got %d videos from youtube", len(videos))
 
         cursor = response.get("nextPageToken")
         while cursor:

@@ -3,18 +3,17 @@ import logging
 import sys
 
 
-def setup_logging(name, log_level="INFO", **kwargs):
+def setup_logging(log_level="INFO", **kwargs):
     """Setup logging.
 
     Args:
-        name (str): Log name.
         log_level (str): Logging level.
     """
     log_format = (
         '%(asctime)s '
         '%(name)s '
         '[%(levelname)s] '
-        '- %(message)s'
+        '%(message)s'
     )
 
     stdout_handler = logging.StreamHandler(sys.stdout)

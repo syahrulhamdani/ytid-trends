@@ -11,7 +11,7 @@ from ytid import config, YouTube
 from ytid.logger import setup_logging
 
 
-_LOGGER = logging.getLogger(__name__)
+_LOGGER = logging.getLogger("main")
 
 
 def main():
@@ -42,8 +42,5 @@ def main():
 
 
 if __name__ == "__main__":
-    setup_logging(
-        "indonesia-youtube-trending",
-        config.LOG_LEVEL
-    )
+    setup_logging(config.LOG_LEVEL)
     main()
