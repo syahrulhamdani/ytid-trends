@@ -1,11 +1,12 @@
 """Script to check last retrieval trendings in trending.csv"""
+import os
 import logging
 from datetime import datetime
-from os.path import join
 
 import pandas as pd
 
 from ytid import config as c
+from ytid.exceptions import ReadError
 from ytid.logger import setup_logging
 
 
@@ -13,7 +14,10 @@ _LOGGER = logging.getLogger(__name__)
 
 
 def main():
-    filename = join(c.DATADIR, "trending.csv")
+    filename = os.path.join(c.DATADIR, "trending.csv")
+    if not os.path.exists(filename):
+        raise ReadError("File not found: %s" % filename)
+
     df = pd.read_csv(filename, parse_dates=[-1])
     _LOGGER.info("Loaded data: %s", filename)
 
