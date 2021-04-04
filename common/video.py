@@ -1,5 +1,5 @@
 """Module for representing a video."""
-from dataclasses import dataclass, asdict, field
+from dataclasses import dataclass
 from typing import Dict
 
 

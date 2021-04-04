@@ -1,5 +1,8 @@
 # YouTube Indonesia Trending Data
 
+[![GitHub Super-Linter](https://github.com/syahrulhamdani/ytid-trends/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
+
 Extract YouTube Indonesia trending data.
 
 ## Motivation
