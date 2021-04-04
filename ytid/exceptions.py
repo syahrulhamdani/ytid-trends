@@ -1,5 +1,6 @@
 """Exceptions module."""
 
+
 class YoutubeError(Exception):
     """Base class for all exceptions occur in the app."""
     pass
