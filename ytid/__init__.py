@@ -1,6 +1,6 @@
 import logging
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Any, Dict, List
 
 import requests
 from requests.exceptions import RequestException
@@ -23,7 +23,7 @@ class YouTube:
     url: str
     api_key: str
 
-    def _get(self, payload: Dict[str, str]):
+    def _get(self, payload: Dict[str, Any]):
         try:
             res = requests.get(self.url, params=payload)
             res.raise_for_status()
