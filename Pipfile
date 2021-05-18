@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 requests = "==2.25.1"
 pandas = "*"
+kaggle = "~=1.5.12"
 
 [dev-packages]
 pylint = "*"

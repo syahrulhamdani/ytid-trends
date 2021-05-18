@@ -5,6 +5,7 @@ from datetime import datetime
 from time import time
 
 import pandas as pd
+import pytz
 
 from common.utils import save_to_csv
 from ytid import config, YouTube
@@ -16,6 +17,8 @@ _LOGGER = logging.getLogger("main")
 
 def main():
     _LOGGER.info("Start retrieving indonesia youtube trending videos")
+    now = datetime.now(tz=pytz.utc)
+
     youtube = YouTube(
         url=config.URL,
         api_key=config.API_KEY
@@ -27,7 +30,7 @@ def main():
                   (end - start))
 
     df_videos = pd.DataFrame([
-        video.to_dict(trending_time=datetime.now())
+        video.to_dict(trending_time=now)
         for video in videos
     ])
     _LOGGER.info("Got total %d trending videos", df_videos.shape[0])
