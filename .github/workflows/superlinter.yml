@@ -6,10 +6,6 @@ on:
     # Trigger workflow only for branches other than main, ignore for main
     branches-ignore:
       - main
-  pull_request:
-    # Trigger workflow for any pull request on the branch main
-    branches:
-      - main
 
 jobs:
   # specify the job key -> will be used as the job name
