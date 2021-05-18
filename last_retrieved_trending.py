@@ -1,7 +1,6 @@
 """Script to check last retrieval trendings in trending.csv"""
 import os
 import logging
-from datetime import datetime
 
 import pandas as pd
 

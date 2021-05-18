@@ -1,0 +1,27 @@
+name: Lint Code Base
+
+# Run the workflow everytime a pull request is made
+on: pull_request
+
+jobs:
+  # specify the job key -> will be used as the job name
+  # if a job name isn't provided
+  super-lint:
+    # job name
+    name: Python Linter
+    # type of machine to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # checks out a copy of the repo onto the machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      # runs super-linter action
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          VALIDATE_PYTHON_BLACK: false
+          VALIDATE_PYTHON_ISORT: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
