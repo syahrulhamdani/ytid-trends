@@ -1,7 +1,11 @@
 name: Lint Code Base
 
 # Run the workflow everytime a pull request is made
-on: pull_request
+on:
+  push:
+    # Trigger workflow only for branches other than main, ignore for main
+    branches-ignore:
+      - main
 
 jobs:
   # specify the job key -> will be used as the job name
