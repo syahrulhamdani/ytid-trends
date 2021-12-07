@@ -71,6 +71,7 @@ class YouTube:
 
         videos = [
             Video(
+                id=video.get("id"),
                 snippet=video.get("snippet"),
                 content_detail=video.get("contentDetails"),
                 statistic=video.get("statistics")
