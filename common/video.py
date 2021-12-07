@@ -18,11 +18,11 @@ class Video:
             "title": self.snippet.get("title"),
             "description": self.snippet.get("description"),
             "thumbnail_url": self.snippet.get(
-                "thumbnails", {}).get("url"),
+                "thumbnails", {}).get("high").get("url"),
             "thumbnail_width": self.snippet.get(
-                "thumbnails", {}).get("width"),
+                "thumbnails", {}).get("high").get("width"),
             "thumbnail_height": self.snippet.get(
-                "thumbnails", {}).get("height"),
+                "thumbnails", {}).get("high").get("height"),
             "channel_name": self.snippet.get("channelTitle"),
             "tags": self.snippet.get("tags"),
             "category_id": self.snippet.get("categoryId"),
