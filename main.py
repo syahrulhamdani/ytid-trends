@@ -1,7 +1,7 @@
 """Worker to extract Indonesia Trending YouTube Video Statistics."""
-import os
 import logging
 from datetime import datetime
+from pathlib import Path
 from time import time
 
 import pandas as pd
@@ -18,6 +18,8 @@ _LOGGER = logging.getLogger("main")
 def main():
     _LOGGER.info("Start retrieving indonesia youtube trending videos")
     now = datetime.now(tz=pytz.utc)
+    dataset_version = datetime.now(tz=pytz.timezone("Asia/Jakarta"))
+    dataset_version = dataset_version.strftime("%Y%m%d.%H%M")
 
     youtube = YouTube(
         url=config.URL,
@@ -35,13 +37,11 @@ def main():
     ])
     _LOGGER.info("Got total %d trending videos", df_videos.shape[0])
 
-    filename = os.path.join(config.DATADIR, "trending.csv")
-    save_to_csv(df_videos, filename)
+    filename = Path(config.DATADIR) / f"trending_{dataset_version}.csv"
+    save_to_csv(df_videos, filename.as_posix())
     df_saved = pd.read_csv(filename)
     _LOGGER.info("Done saving %d trending videos (%s). Total videos: %d",
-                 df_videos.shape[0],
-                 os.path.join(config.DATADIR, "trending.csv"),
-                 df_saved.shape[0])
+                 df_videos.shape[0], filename, df_saved.shape[0])
 
 
 if __name__ == "__main__":
