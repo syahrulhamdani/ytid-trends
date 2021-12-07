@@ -6,6 +6,7 @@ from typing import Dict
 @dataclass
 class Video:
     """Video resource instance."""
+    id: str
     snippet: Dict[str, str]
     content_detail: Dict[str, str]
     statistic: Dict[str, int]
@@ -53,5 +54,6 @@ class Video:
             "favorite": self.statistic.get("favoriteCount"),
             "comment": self.statistic.get("commentCount")
         }
+        video_id = {"video_id": self.id}
 
-        return dict(**snippet, **content, **statistic, **kwargs)
+        return dict(**video_id, **snippet, **content, **statistic, **kwargs)
