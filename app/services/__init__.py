@@ -1,3 +1,4 @@
+"""Module for retrieving data from YouTube Data API."""
 import logging
 from dataclasses import dataclass
 from typing import Any, Dict, List
@@ -5,8 +6,8 @@ from typing import Any, Dict, List
 import requests
 from requests.exceptions import RequestException
 
-from common.video import Video
-from ytid.exceptions import ReadError
+from app.common.video import Video
+from app.core.exceptions import ReadError
 
 
 _LOGGER = logging.getLogger(__name__)

@@ -7,11 +7,12 @@ from time import time
 import pandas as pd
 import pytz
 
-from common.utils import save_to_csv
-from ytid import config, YouTube
-from ytid.logger import setup_logging
+from app.common.utils import save_to_csv
+from app.core import config
+from app.core.logger import setup_logging
+from app.services import YouTube
 
-
+setup_logging(config.LOG_LEVEL)
 _LOGGER = logging.getLogger("main")
 
 
@@ -19,7 +20,7 @@ def main():
     _LOGGER.info("Start retrieving indonesia youtube trending videos")
     now = datetime.now(tz=pytz.utc)
     dataset_version = datetime.now(tz=pytz.timezone("Asia/Jakarta"))
-    dataset_version = dataset_version.strftime("%Y%m%d.%H%M")
+    dataset_version = dataset_version.isoformat()
 
     youtube = YouTube(
         url=config.URL,
@@ -45,5 +46,4 @@ def main():
 
 
 if __name__ == "__main__":
-    setup_logging(config.LOG_LEVEL)
     main()
